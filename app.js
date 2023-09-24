@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
 
 require('./src/routes/BookRoutes')(app);
 app.use('/api-docs-sum', swaggerUi.serve, swaggerUi.setup(swagger));
+
 // Mulai server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
