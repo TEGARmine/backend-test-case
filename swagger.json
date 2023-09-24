@@ -1,0 +1,259 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Library API",
+    "description" : "Library API Documentation",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:3000"
+  } ],
+  "tags" : [
+    {
+      "name" : "POST",
+      "description" : "Book borrowing at the library"
+    },
+    {
+      "name" : "PUT",
+      "description" : "Book returning at the library"
+    },
+    {
+      "name" : "GET",
+      "description" : "Get all books"
+    },
+    {
+      "name" : "GET",
+      "description" : "Get ready books"
+    },
+    {
+      "name" : "GET",
+      "description" : "Get all members"
+    }
+  ],
+  "paths" : {
+    "/api/v1/pinjam-buku" : {
+      "post" : {
+        "description" : "Borrow a book",
+        "tags" : [ "POST" ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body"
+              },
+              "examples" : {
+                "Body Request" : {
+                  "value": {
+                    "book_code": "JK-45",
+                    "member_code": "M001"
+                  }
+                },
+                "Another Body Request" : {
+                  "value": {
+                    "book_code": "JK-45",
+                    "member_code": "M002"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/response"
+                },
+                "examples" : {
+                  "response": {
+                    "value": {
+                      "message": "Success"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        },
+        "servers" : [ {
+          "url" : "http://localhost:3000"
+        } ]
+      }
+    },
+    "/api/v1/pengembalian-buku" : {
+      "put" : {
+        "description" : "Return a book",
+        "tags" : [ "PUT" ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body"
+              },
+              "examples" : {
+                "Body Request" : {
+                  "value": {
+                    "book_code": "JK-45",
+                    "member_code": "M001"
+                  }
+                },
+                "Another Body Request" : {
+                  "value": {
+                    "book_code": "JK-45",
+                    "member_code": "M002"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/response"
+                },
+                "examples" : {
+                  "response": {
+                    "value": {
+                      "message": "Success"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        },
+        "servers" : [ {
+          "url" : "http://localhost:3000"
+        } ]
+      }
+    },
+    "/api/v1/books" : {
+      "get" : {
+        "description" : "Get all books",
+        "tags" : [ "GET" ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/response"
+                },
+                "examples" : {
+                  "response": {
+                    "value": {
+                      "message": "Success"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        },
+        "servers" : [ {
+          "url" : "http://localhost:3000"
+        } ]
+      }
+    },
+    "/api/v1/ready-books" : {
+      "get" : {
+        "description" : "Get ready books",
+        "tags" : [ "GET" ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/response"
+                },
+                "examples" : {
+                  "response": {
+                    "value": {
+                      "message": "Success"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        },
+        "servers" : [ {
+          "url" : "http://localhost:3000"
+        } ]
+      }
+    },
+    "/api/v1/members" : {
+      "get" : {
+        "description" : "Get all members",
+        "tags" : [ "GET" ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json; charset=utf-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/response"
+                },
+                "examples" : {
+                  "response": {
+                    "value": {
+                      "message": "Success"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request"
+          }
+        },
+        "servers" : [ {
+          "url" : "http://localhost:3000"
+        } ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "body": {
+        "type": "object",
+        "properties": {
+          "bookId": {
+            "type": "integer"
+          },
+          "userId": {
+            "type": "integer"
+          }
+        }
+      },
+      "response": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
