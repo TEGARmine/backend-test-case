@@ -3,7 +3,7 @@ const request = require('supertest');
 const app = require('../app');
 
 describe('PUT /api/v1/pengembalian-buku', () => {
-  test('pengembalian buku', async () => {
+  test('telat pengembalian buku', async () => {
     const response = await request(app)
       .post('/api/v1/pinjam-buku')
       .send({
@@ -18,7 +18,8 @@ describe('PUT /api/v1/pengembalian-buku', () => {
       .put('/api/v1/pengembalian-buku')
       .send({
         member_code: 'M001',
-        book_code: 'JK-45'
+        book_code: 'JK-45',
+        date_return: '2023-10-02'
       });
 
       expect(pengembalianResponse.statusCode).toBe(200);
